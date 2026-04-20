@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sand Mandala Machine</title>
+  <meta property="og:title" content="Sand Mandala Machine">
+  <meta property="og:description" content="Dial four ancient sliders. Watch your mandala materialize from sand. Receive its name.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.3/lib/p5.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inconsolata:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+  <script src="feedback.js" defer></script>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Sand Mandala Machine</h1>
+      <p class="subtitle">Configure the parameters of the universe. Watch it crystallize.</p>
+    </header>
+
+    <div id="controls-panel">
+      <div class="slider-group">
+        <label for="chaos">Chaos Level <span class="value-display" id="chaos-val">50</span></label>
+        <input type="range" id="chaos" min="0" max="100" value="50">
+        <span class="slider-hint">entropy of the void</span>
+      </div>
+      <div class="slider-group">
+        <label for="warmth">Color Temperature <span class="value-display" id="warmth-val">50</span></label>
+        <input type="range" id="warmth" min="0" max="100" value="50">
+        <span class="slider-hint">the fire or the frost</span>
+      </div>
+      <div class="slider-group">
+        <label for="symmetry">Symmetry Axis <span class="value-display" id="symmetry-val">6</span></label>
+        <input type="range" id="symmetry" min="3" max="12" value="6">
+        <span class="slider-hint">sacred repetitions</span>
+      </div>
+      <div class="slider-group">
+        <label for="grain">Grain Density <span class="value-display" id="grain-val">50</span></label>
+        <input type="range" id="grain" min="0" max="100" value="50">
+        <span class="slider-hint">how many grains of being</span>
+      </div>
+      <button id="render-btn">Render the Mandala</button>
+    </div>
+
+    <div id="render-panel" style="display:none">
+      <div id="loading-msg">
+        <span class="loading-text">sifting sand across the threshold of form...</span>
+        <div class="sand-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div id="result-panel" style="display:none">
+        <div id="canvas-wrapper">
+          <!-- p5 canvas inserted here -->
+        </div>
+        <div id="archetype-reveal">
+          <div class="archetype-label">Your mandala is called</div>
+          <div id="archetype-name" class="archetype-name"></div>
+          <div id="archetype-desc" class="archetype-desc"></div>
+        </div>
+        <div id="share" style="display:block">
+          <button onclick="share()" class="share-btn">Share Your Mandala</button>
+          <button onclick="downloadCard()" class="share-btn secondary">Save as Image</button>
+        </div>
+        <button id="remake-btn" onclick="resetApp()">Make Another</button>
+      </div>
+    </div>
+
+    <div id="error-msg" style="display:none">
+      <p>the sand refused to cooperate — try adjusting the chaos level</p>
+    </div>
+  </div>
+</body>
+</html>
